@@ -437,3 +437,18 @@ class LoginViewModel @Inject constructor(
 1. **How do you design a robust data flow in an Android app?**
 
     **Answer:** Unidirectional flow: API → Repository → Use Case → ViewModel → Compose. Use StateFlow for reactive UI updates.
+
+### Can you explain how the Android activity and fragment lifecycles work together — and how you’d handle a complex case like a configuration change during an async background operation (e.g., a network call or database query)?
+
+    In Android, each Activity hosts one or more Fragments. The Fragment lifecycle is tightly coupled to its parent Activity.
+
+    When an Activity is created, it goes through onCreate() → onStart() → onResume(). For each attached Fragment, the sequence begins with onAttach() → onCreate() → onCreateView() → onViewCreated() → onStart() → onResume().
+
+    During a configuration change (like screen rotation), both Activity and Fragments are destroyed and recreated. This means any ongoing async task tied to the old instance can leak memory or lose results if not managed properly.
+
+    To handle this safely, we use ViewModel, which is scoped to the Activity or Fragment’s lifecycle owner but survives configuration changes. The ViewModel can launch background operations using Kotlin Coroutines, LiveData, or Flow. When the configuration changes, the new Fragment instance can simply observe the same ViewModel and receive the existing state or results without restarting the operation.
+
+    Additionally, to ensure no leaks, any coroutine or job should be launched in viewModelScope, which automatically cancels when the ViewModel is cleared (e.g., when the Activity finishes).
+
+    This design ensures proper lifecycle management, prevents memory leaks, and keeps the UI reactive and up to date after recreation.
+

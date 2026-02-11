@@ -6,21 +6,24 @@
 ## SOLID Principal
 SOLID is an acronym for the first five object-oriented design (OOD) principles by Robert C. Martin (also known as Uncle Bob).
 
-These principles establish practices for developing software with considerations for maintaining and extending it as the project grows. Adopting these practices can also help avoid code smells, refactor code, and develop Agile or Adaptive software.
+These rules help you write code that is `easy to understand, maintain, and improve` as your project grows.
+Following SOLID makes your code `cleaner, easier to change, and less likely to have problems` later.
+
 
 SOLID stands for:
 
-- S - `Single-responsibility Principle` (A class should have one and only one reason to change, meaning that a class should have only one job.)
-- O - `Open-closed Principle`(Objects or entities should be open for extension but closed for modification.)
-- L - `Liskov Substitution Principle`(subclasses should be substitutable for their base classes. )
-- I - `Interface Segregation Principle` (many client-specific interfaces are better than one general-purpose interface. Clients should not be forced to implement a function they do not need. )
-- D - `Dependency Inversion Principle` (our classes should depend upon interfaces or abstract classes instead of concrete classes and functions. )
+- S - `Single-responsibility Principle` : A class should have one and only one reason to change, meaning that a class should have only one job.
+- O - `Open-closed Principle`: Objects or entities should be open for extension but closed for modification.
+- L - `Liskov Substitution Principle` : subclasses should be substitutable for their base classes. 
+- I - `Interface Segregation Principle` : many client-specific interfaces are better than one general-purpose interface. Clients should not be forced to implement a function they do not need.
+- D - `Dependency Inversion Principle` : our classes should depend upon interfaces or abstract classes instead of concrete classes and functions.
 
 
 
 `SRP` : Gather together the things that change for the same reasons. Separate things that change for different reasons. We do not mix SQL queries with communications protocols.We keep code that is changed for different reasons separate so that changes to one part to not break other parts.
 
-Q - When to change design for SRP ?
+>Q - When to change design for SRP ?
+
 A- Question yourself : Are parts of it changing while other parts arn't?
 if things are not changing in code and code is stable then it doesn't need to be fixed.
 examine your design and apply SRP when need is real not hypothetical.
@@ -260,7 +263,7 @@ public static void main(args ...){
     test.m1(10); // print integer
     test.m1(10.5f); // print float
     test.m1('a'); // print integer due to promotion . compiler will not give error imeediatly.
-    test.m1(10.5); // this is long. there is no promotion for long so compiler will give error here.
+    test.m1(10.5); // this is double. there is no promotion for double so compiler will give error here.
 
 /**    Example 2
        public void m2(Object o ){print("object");}
@@ -294,8 +297,11 @@ public static void main(args ...){
     test.m5(22.5f,22.5.f); // no method found error, because int can be promoted to float but float cannot. 
 
 // Example 6 
+// class Test{
 //    public void m6(Animal a ){print("Animal");}
 //    public void m6(Monkey m ){print("Monkey");}
+// }
+
     Animal a = new Animal();
     Monkey m = new Monkey();
     Animal c = new Monkey();
@@ -303,8 +309,29 @@ public static void main(args ...){
     test.m6(m) // Monkey
     test.m6(c) //  Animal ,because method resolution taken care by compiler based on reference type not object type.
 
+    // Example 7 
+    /**
+      class Animal {
+      public void m6(Animal a ){print      ("Animal");}
+      }
+
+    class Monkey extends Animal{
+    override public void m6(Monkey m ){print("Monkey");}
+    }
+     **/
+//    
+//    
+    Animal a = new Animal();
+    Monkey m = new Monkey();
+    Animal c = new Monkey();
+    test.m6(a); // Animal
+    test.m6(m) // Monkey
+    test.m6(c) //  Monkey.
+
 }
 ```
+🔸 Overloading → Compile-time polymorphism
+🔸 Overriding → Runtime polymorphism
 
 - if after promotions there is no arguments found then compiler will give error.
 In overloading, exact match will get high priorty

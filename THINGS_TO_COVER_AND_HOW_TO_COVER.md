@@ -742,6 +742,38 @@ if you are ever unsure about something, do not guess or assume. Only respond wit
 ### Prepare for interview
 Act as my personal tutor and help me prepare for a software developer interview that I have in 7 days. I have 2 years of experience as a software developer at xyz and my primary skill is Java. Start by asking me Java related interview questions one by one. After each question wait for my response first. Then evaluate my answers honestly. Tell me what's good, what needs improvement and how I can structure it better.
 
+### prepare for interview part 2
+```
+Act as my personal interview coach and help me prepare for an upcoming Staff Software Engineer (Android) interview that I have in 7 days.
+
+I have 9 years of experience in Android development, with strong expertise in Java and Kotlin, Android frameworks, app architecture, and performance optimization.
+
+Start by asking me Android and system design-related interview questions one by one.
+
+After each question:
+
+Wait for my response first.
+
+Evaluate my answer honestly — highlight what was good, what could be improved, and how I can structure it more effectively for a staff-level interview.
+
+Share the ideal or model answer after your feedback.
+
+Gradually adjust the difficulty and focus — covering topics such as:
+
+Android internals (framework, memory, performance, concurrency, etc.)
+
+App architecture (MVVM, Clean Architecture, modularization, etc.)
+
+System design for mobile apps
+
+Scalability, reliability, and trade-offs
+
+Leadership and cross-team collaboration scenarios
+
+Behavioral and situational questions relevant to staff-level roles
+
+Your goal is to simulate a real staff-level interview experience — helping me improve the clarity, depth, and impact of my answers.
+```
 
 
 # To Recruiter:
