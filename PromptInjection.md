@@ -542,4 +542,41 @@ Companies defend against prompt injection using **multiple layers**:
 Because prompt injection is similar to **social engineering for AI**, no single defense works alone.
 
 
+More over you can check repo https://github.com/protectai/llm-guard/blob/v0.3.16/docs/input_scanners/prompt_injection.md
+
+
+
+## 🛡️ Privacy Layer: Analyzer & Anonymizer
+
+This project uses the **Microsoft Presidio SDK** to detect and redact Personally Identifiable Information (PII) from AI-generated outputs.
+
+### 1. The Analyzer (`analyzer.analyze`)
+The **Analyzer** is the "detective." It uses Natural Language Processing (NLP) and regular expressions to scan the raw text and identify sensitive entities.
+
+* **Input:** Raw text (e.g., "Contact John Doe at john.doe@email.com")
+* **Output:** A list of "results" containing the entity type, its location (start/end characters), and a confidence score.
+* **Supported Entities:** Names, Email Addresses, Phone Numbers, Credit Card Numbers, IP Addresses, etc.
+
+### 2. The Anonymizer (`anonymizer.anonymize`)
+The **Anonymizer** is the "editor." It takes the original text and the list of detections from the Analyzer and replaces the sensitive parts with placeholders.
+
+* **Input:** Original text + Analyzer Results.
+* **Output:** An `AnonymizerResponse` object. The cleaned string is accessed via the `.text` property.
+
+---
+
+### 📝 Practical Example
+
+**Input String:**
+> "Please send the invoice to Martha Stewart at martha.s@company.com immediately."
+
+| Step | Process | Result |
+| :--- | :--- | :--- |
+| **Step 1: Analyze** | Scans for `PERSON` and `EMAIL` | Found `Martha Stewart` [chars 26-40] and `martha.s@company.com` [chars 44-64] |
+| **Step 2: Anonymize** | Replaces identified segments | "Please send the invoice to **<PERSON>** at **<EMAIL_ADDRESS>** immediately." |
+
+### 🛠️ Why this matters
+By integrating this layer, we ensure that even if an LLM generates sensitive data (like a real user's name or contact info in a CSV export), the data is **redacted** before it ever reaches the final user or logs, ensuring GDPR and HIPAA compliance.
+
+
 
