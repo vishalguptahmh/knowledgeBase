@@ -156,6 +156,37 @@ Application layer can be divided into two parts
 - Proxy vs firewall
 
 
+## [Design chat application](pdfs/1 Design chat application.pdf)
+
+## [Rate Limiter](pdfs/2 Rate limiter.pdf)
+
+## [Design Idempotent post api](pdfs/3 Design idempotent post api.pdf)
+
+## [Design High avaibliabity architecture](pdfs/4 Design high availability architecture .pdf)
+
+## [Distributed Messgin queue kfka rabbitmq](pdfs/5 Distributed messaging queue (Kafka ,Rabbitmq).pdf)
+
+
+## [proxy vs reverse proxy](pdfs/6 Proxy vs reverse proxy.pdf)
+
+## [Tree](pdfs/7 TREE.pdf)
+
+## [AWS](pdfs/8 Aws.pdf)
+
+
+## Algos
+- [Base ](pdfs/Alogos 1.pdf)
+- [Best and worst case](pdfs/Alogos 2  Best case and worst case.pdf)
+- [Divide and conquer](pdfs/Alogos 2 Divide and conquer.pdf)
+- [Binary search](pdfs/Alogos 3 Binary search.pdf)
+- [Merge Sort](pdfs/Alogos 4 Merge sort.pdf)
+- [Quick Sort](pdfs/Alogos 5 Quick sort.pdf)
+
+
+
+
+
+
 
 # Reference : 
 
